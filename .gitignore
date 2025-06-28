@@ -1,0 +1,78 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+package-lock.json
+
+# testing
+/coverage
+query.sql
+
+/src/env.mjs 
+# next.js
+/.next/
+/out/
+.next/
+
+
+# production
+/build
+
+/public/sw.*
+/public/sw.js
+/public/sw.js.map
+/public/workbox-*.js
+
+
+# misc
+.DS_Store
+*.pem
+
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.secrets
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+src/env.mjs
+generate/deepai/*
+
+some.mjs
+public/workbox-e34f44db.js.map
+public/sw.js
+
+generate/venv/*
+
+generate/hidden/*
+generate/src/tmp/*
+# generate/public/*
+.env
+bun.lockb
+
+# sst
+.sst
+	
+# open-next
+.open-next
+
+# cursor stuff
+.cursor/*
+.cursorignore
+/plans/*
+*_docs.md
+
+# ignore the publci backgound video files
+/generate/public/background/video-*.mp4
+/generate/public/background/background-*.mp4
