@@ -1,7 +1,7 @@
 import generateBrainrot from './modes/brainrot/generate';
 import path from 'path';
 import { exec } from 'child_process';
-import { rm, mkdir, unlink, rename } from 'fs/promises';
+import { rm, mkdir, unlink, rename, readFile, readdir } from 'fs/promises';
 import generateRap from './modes/rap/generate';
 import { FAMILY_MATTERS_LYRICS } from './lyrics';
 import fs from 'fs';
@@ -80,15 +80,24 @@ async function main() {
 			});
 			break;
 		case 'brainrot':
-			videoTopic =
-				"My dad suffered from a mental illness, and when I was a kid, he killed two people because he believed he was doing God's work. I was only joking when I hid the walkie-talkie in his room and told him to kill those teachers, so I never thought he would actually go through with it.";
-			const music = 'WII_SHOP_CHANNEL_TRAP';
+			const topicFilePath = path.join(__dirname, 'brainrot-topic.txt');
+			videoTopic = await readFile(topicFilePath, 'utf-8').then(content => content.trim());
+			
+			const musicFolderPath = path.join(__dirname, 'public', 'music');
+			const musicFiles = await readdir(musicFolderPath);
+			const mp3Files = musicFiles.filter(file => file.toLowerCase().endsWith('.mp3'));
+			const randomMusicFile = mp3Files[Math.floor(Math.random() * mp3Files.length)];
+			const music = path.parse(randomMusicFile).name; // Remove .MP3 extension
+			
+			console.log(`🎵 Selected music: ${music}`);
+			
 			await generateBrainrot({
 				local,
 				topic: videoTopic,
 				text: videoTopic,
 				music,
 			});
+			break;
 		default:
 			break;
 	}

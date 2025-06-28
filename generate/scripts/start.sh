@@ -30,6 +30,7 @@ if [ "${MODE}" != "production" ]; then
     CMD="$CMD -v $(pwd)/concat.ts:/app/brainrot/concat.ts"
     CMD="$CMD -v $(pwd)/transcript.ts:/app/brainrot/transcript.ts"
     CMD="$CMD -v $(pwd)/transcribe.ts:/app/brainrot/transcribe.ts"
+    CMD="$CMD -v $(pwd)/brainrot-topic.txt:/app/brainrot/brainrot-topic.txt"
 fi
 
 # Additional mounts for studio mode

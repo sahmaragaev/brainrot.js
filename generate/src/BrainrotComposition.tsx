@@ -147,6 +147,7 @@ export const BrainrotComposition: React.FC<BrainrotSchemaType> = ({
 						{videoFileName && (
 							<OffthreadVideo
 								muted
+								startFrom={0.05}
 								className="h-full w-full object-cover"
 								src={staticFile(videoFileName)}
 							/>

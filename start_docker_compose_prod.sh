@@ -75,6 +75,8 @@ services:
       - "3000:3000"
     volumes:
       - ./shared_data:/app/brainrot/shared_data
+      - ./generate/brainrot-topic.txt:/app/brainrot/brainrot-topic.txt
+      - ./generate/public/music:/app/brainrot/public/music
     environment:
       - MODE=production
       - RVC_SERVICE_URL=http://rvc:5555
